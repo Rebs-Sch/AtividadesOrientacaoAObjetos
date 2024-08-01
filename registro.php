@@ -1,21 +1,17 @@
 <?php
 
-$turmas = array();
+$galeria = array();
 
-for($i = 1; $i <= 4; $i++){
-    $turma = array();
-    $turma["curso"] = readline("O que essa turma cursa?");
-    $turma["ano"] = readline("A qual ano essa turma pertence?");
-    $turma["qtdAlunos"] = readline("qual a quantidade de alunos dessa turma?");
+for ($i=0; $i < 3; $i++) {
+    $pintura = array();
+    $pintura ["autor"] = readline("Qual é o autor desta pintura?: ");
+    $pintura ["estilo"] = readline("A que estilo artistico esta pintura pertence?: ");
+    $pintura ["ano"] = readline("Em qual ano esta pintura foi confeccionada? ");
+    $pintura ["valorEst"] = readline("Quanto vale, aproximadamente, esta pintura?");
 
-    array_push($turmas, $turma);
-    echo "\n";
+    array_push($galeria, $pintura);
 }
 
-$ttlAlunos = 0;
-
-foreach($turmas as $turma){
-    $ttlAlunos = $ttlAlunos + $turma["qtdAlunos"];
+foreach ($galeria as $pintura) {
+    echo implode("|", $pintura)."\n";
 }
-
-echo "O total de alunos das 4 turmas é igual a:" . $ttlAlunos;
