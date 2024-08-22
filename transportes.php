@@ -19,10 +19,11 @@ class Veiculo{
     }
 
     public function venderPassagens(int $qtd){
-        $this->passagensVendidas+=$qtd;
 
-        if($this->passagensVendidas <= $this->capacidade){
+        if($this->passagensVendidas <= ($this->capacidade+$qtd)){
             echo "passagem vendida com sucesso.\n";
+            $this->passagensVendidas+=$qtd;
+            
             return true;
         }else{
             $this->passagensVendidas-=$qtd;
@@ -39,10 +40,10 @@ $transporte = new Veiculo(55);
 do{
     $quantidade = readline("Quantas passagens deseja comprar?");
 
-    if ($quantidade != 0){
+    if ($quantidade <= 0){
         $transporte->venderPassagens($quantidade);
     }else{
-        die;
+        break; /*Sai do loop sem necessariamente sair do programa, como o die*/
     }
 
 }while($transporte->getPassagensVendidas() <= $transporte->getCapacidade());
