@@ -8,13 +8,11 @@ class Veiculo{
          $this->capacidade = $c;
     }
 
-    public function getCapacidade(): int
-    {
+    public function getCapacidade(): int{
         return $this->capacidade;
     }
 
-    public function getPassagensVendidas(): int
-    {
+    public function getPassagensVendidas(): int{
         return $this->passagensVendidas;
     }
 
