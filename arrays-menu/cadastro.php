@@ -36,14 +36,14 @@ class Pessoa {
     }
 
     function __toString(){
-        return "\nO nome da pessoa é: ".$this->nome."\nSeu sobrenome é: ".$this->sobrenome."\nE sua idade é: ".$this->idade."\n";
+        return "O nome da pessoa é: ".$this->nome."\nSeu sobrenome é: ".$this->sobrenome."\nE sua idade é: ".$this->idade;
     }
 }
 
 $pessoas = array();
 
 do{
-    echo"\n=====Menu=====\n1 - Cadastrar\n2 - Listar\n0 - Sair\n";
+    echo"\n=====Menu=====\n1 - Cadastrar\n2 - Listar\n3 - Excluir um cadastro\n0 - Sair\n";
 
     $escolha = readline();
 
@@ -67,6 +67,17 @@ do{
                 echo "\n".$pessoa."\n";
             }
 
+            break;
+
+        case 3:
+            for ($i=0; $i < count($pessoas); $i++){
+                echo "\n".$i." - ".$pessoas[$i]->getNome()." ".$pessoas[$i]->getSobrenome();
+            }//sim, talvez fosse melhor usar um foreach, mas eu queria que fosse mostrado a posição da pessoa para ser deletado corretamente, e para isso o For se mostrou mais eficiente. Tentei insistir no Foreach, mas não estava legal.
+
+            echo "\n";
+            $escolhaItem = readline("Digite o número da pessoa que deseja excluir: ");
+            array_splice($pessoas, $escolhaItem, 1);
+            
             break;
 
         case 0:
